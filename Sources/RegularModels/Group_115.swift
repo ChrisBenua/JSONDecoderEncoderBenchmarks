@@ -1,0 +1,252 @@
+import Foundation
+
+public final class A2301: Codable, Sendable {
+    public let a: Int
+    public let b: A2302
+    public let c: [A2303]
+    public let d: [String: A2304]
+
+    public init(a: Int,
+        b: A2302,
+        c: [A2303],
+        d: [String: A2304]) {
+        self.a = a
+        self.b = b
+        self.c = c
+        self.d = d
+    }
+}
+
+public final class A2302: Codable, Sendable {
+    public let a: Int
+    public let b: A2303
+    public let c: [A2304]
+
+    public init(a: Int,
+        b: A2303,
+        c: [A2304]) {
+        self.a = a
+        self.b = b
+        self.c = c
+    }
+}
+
+public final class A2303: Codable, Sendable {
+    public let a: Int
+    public let b: A2304
+
+    public init(a: Int,
+        b: A2304) {
+        self.a = a
+        self.b = b
+    }
+}
+
+public final class A2304: Codable, Sendable {
+    public let a: Int
+
+    public init(a: Int) {
+        self.a = a
+    }
+}
+
+public final class A2305: Codable, Sendable {
+    public let a: Int
+    public let b: A2306
+    public let c: [A2307]
+    public let d: [String: A2308]
+
+    public init(a: Int,
+        b: A2306,
+        c: [A2307],
+        d: [String: A2308]) {
+        self.a = a
+        self.b = b
+        self.c = c
+        self.d = d
+    }
+}
+
+public final class A2306: Codable, Sendable {
+    public let a: Int
+    public let b: A2307
+    public let c: [A2308]
+
+    public init(a: Int,
+        b: A2307,
+        c: [A2308]) {
+        self.a = a
+        self.b = b
+        self.c = c
+    }
+}
+
+public final class A2307: Codable, Sendable {
+    public let a: Int
+    public let b: A2308
+
+    public init(a: Int,
+        b: A2308) {
+        self.a = a
+        self.b = b
+    }
+}
+
+public final class A2308: Codable, Sendable {
+    public let a: Int
+
+    public init(a: Int) {
+        self.a = a
+    }
+}
+
+public final class A2309: Codable, Sendable {
+    public let a: Int
+    public let b: A2310
+    public let c: [A2311]
+    public let d: [String: A2312]
+
+    public init(a: Int,
+        b: A2310,
+        c: [A2311],
+        d: [String: A2312]) {
+        self.a = a
+        self.b = b
+        self.c = c
+        self.d = d
+    }
+}
+
+public final class A2310: Codable, Sendable {
+    public let a: Int
+    public let b: A2311
+    public let c: [A2312]
+
+    public init(a: Int,
+        b: A2311,
+        c: [A2312]) {
+        self.a = a
+        self.b = b
+        self.c = c
+    }
+}
+
+public final class A2311: Codable, Sendable {
+    public let a: Int
+    public let b: A2312
+
+    public init(a: Int,
+        b: A2312) {
+        self.a = a
+        self.b = b
+    }
+}
+
+public final class A2312: Codable, Sendable {
+    public let a: Int
+
+    public init(a: Int) {
+        self.a = a
+    }
+}
+
+public final class A2313: Codable, Sendable {
+    public let a: Int
+    public let b: A2314
+    public let c: [A2315]
+    public let d: [String: A2316]
+
+    public init(a: Int,
+        b: A2314,
+        c: [A2315],
+        d: [String: A2316]) {
+        self.a = a
+        self.b = b
+        self.c = c
+        self.d = d
+    }
+}
+
+public final class A2314: Codable, Sendable {
+    public let a: Int
+    public let b: A2315
+    public let c: [A2316]
+
+    public init(a: Int,
+        b: A2315,
+        c: [A2316]) {
+        self.a = a
+        self.b = b
+        self.c = c
+    }
+}
+
+public final class A2315: Codable, Sendable {
+    public let a: Int
+    public let b: A2316
+
+    public init(a: Int,
+        b: A2316) {
+        self.a = a
+        self.b = b
+    }
+}
+
+public final class A2316: Codable, Sendable {
+    public let a: Int
+
+    public init(a: Int) {
+        self.a = a
+    }
+}
+
+public final class A2317: Codable, Sendable {
+    public let a: Int
+    public let b: A2318
+    public let c: [A2319]
+    public let d: [String: A2320]
+
+    public init(a: Int,
+        b: A2318,
+        c: [A2319],
+        d: [String: A2320]) {
+        self.a = a
+        self.b = b
+        self.c = c
+        self.d = d
+    }
+}
+
+public final class A2318: Codable, Sendable {
+    public let a: Int
+    public let b: A2319
+    public let c: [A2320]
+
+    public init(a: Int,
+        b: A2319,
+        c: [A2320]) {
+        self.a = a
+        self.b = b
+        self.c = c
+    }
+}
+
+public final class A2319: Codable, Sendable {
+    public let a: Int
+    public let b: A2320
+
+    public init(a: Int,
+        b: A2320) {
+        self.a = a
+        self.b = b
+    }
+}
+
+public final class A2320: Codable, Sendable {
+    public let a: Int
+
+    public init(a: Int) {
+        self.a = a
+    }
+}
+

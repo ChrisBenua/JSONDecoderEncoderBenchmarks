@@ -1,0 +1,562 @@
+import Foundation
+
+public final class A7121: Codable, Sendable {
+    public let a: Int
+    public let b: A7122
+    public let c: [A7123]
+    public let d: [String: A7124]
+
+    public init(a: Int,
+        b: A7122,
+        c: [A7123],
+        d: [String: A7124]) {
+        self.a = a
+        self.b = b
+        self.c = c
+        self.d = d
+    }
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: String.self)
+        self.a = try container.decode(Int.self, forKey: "a")
+        self.b = try container.decode(A7122.self, forKey: "b")
+        self.c = try container.decode([A7123].self, forKey: "c")
+        self.d = try container.decode([String: A7124].self, forKey: "d")
+    }
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: String.self)
+        try container.encode(a, forKey: "a")
+        try container.encode(b, forKey: "b")
+        try container.encode(c, forKey: "c")
+        try container.encode(d, forKey: "d")
+    }
+    public enum CodingKeys: CodingKey {
+        case a
+        case b
+        case c
+        case d
+    }
+}
+
+public final class A7122: Codable, Sendable {
+    public let a: Int
+    public let b: A7123
+    public let c: [A7124]
+
+    public init(a: Int,
+        b: A7123,
+        c: [A7124]) {
+        self.a = a
+        self.b = b
+        self.c = c
+    }
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: String.self)
+        self.a = try container.decode(Int.self, forKey: "a")
+        self.b = try container.decode(A7123.self, forKey: "b")
+        self.c = try container.decode([A7124].self, forKey: "c")
+    }
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: String.self)
+        try container.encode(a, forKey: "a")
+        try container.encode(b, forKey: "b")
+        try container.encode(c, forKey: "c")
+    }
+    public enum CodingKeys: CodingKey {
+        case a
+        case b
+        case c
+    }
+}
+
+public final class A7123: Codable, Sendable {
+    public let a: Int
+    public let b: A7124
+
+    public init(a: Int,
+        b: A7124) {
+        self.a = a
+        self.b = b
+    }
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: String.self)
+        self.a = try container.decode(Int.self, forKey: "a")
+        self.b = try container.decode(A7124.self, forKey: "b")
+    }
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: String.self)
+        try container.encode(a, forKey: "a")
+        try container.encode(b, forKey: "b")
+    }
+    public enum CodingKeys: CodingKey {
+        case a
+        case b
+    }
+}
+
+public final class A7124: Codable, Sendable {
+    public let a: Int
+
+    public init(a: Int) {
+        self.a = a
+    }
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: String.self)
+        self.a = try container.decode(Int.self, forKey: "a")
+    }
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: String.self)
+        try container.encode(a, forKey: "a")
+    }
+    public enum CodingKeys: CodingKey {
+        case a
+    }
+}
+
+public final class A7125: Codable, Sendable {
+    public let a: Int
+    public let b: A7126
+    public let c: [A7127]
+    public let d: [String: A7128]
+
+    public init(a: Int,
+        b: A7126,
+        c: [A7127],
+        d: [String: A7128]) {
+        self.a = a
+        self.b = b
+        self.c = c
+        self.d = d
+    }
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: String.self)
+        self.a = try container.decode(Int.self, forKey: "a")
+        self.b = try container.decode(A7126.self, forKey: "b")
+        self.c = try container.decode([A7127].self, forKey: "c")
+        self.d = try container.decode([String: A7128].self, forKey: "d")
+    }
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: String.self)
+        try container.encode(a, forKey: "a")
+        try container.encode(b, forKey: "b")
+        try container.encode(c, forKey: "c")
+        try container.encode(d, forKey: "d")
+    }
+    public enum CodingKeys: CodingKey {
+        case a
+        case b
+        case c
+        case d
+    }
+}
+
+public final class A7126: Codable, Sendable {
+    public let a: Int
+    public let b: A7127
+    public let c: [A7128]
+
+    public init(a: Int,
+        b: A7127,
+        c: [A7128]) {
+        self.a = a
+        self.b = b
+        self.c = c
+    }
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: String.self)
+        self.a = try container.decode(Int.self, forKey: "a")
+        self.b = try container.decode(A7127.self, forKey: "b")
+        self.c = try container.decode([A7128].self, forKey: "c")
+    }
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: String.self)
+        try container.encode(a, forKey: "a")
+        try container.encode(b, forKey: "b")
+        try container.encode(c, forKey: "c")
+    }
+    public enum CodingKeys: CodingKey {
+        case a
+        case b
+        case c
+    }
+}
+
+public final class A7127: Codable, Sendable {
+    public let a: Int
+    public let b: A7128
+
+    public init(a: Int,
+        b: A7128) {
+        self.a = a
+        self.b = b
+    }
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: String.self)
+        self.a = try container.decode(Int.self, forKey: "a")
+        self.b = try container.decode(A7128.self, forKey: "b")
+    }
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: String.self)
+        try container.encode(a, forKey: "a")
+        try container.encode(b, forKey: "b")
+    }
+    public enum CodingKeys: CodingKey {
+        case a
+        case b
+    }
+}
+
+public final class A7128: Codable, Sendable {
+    public let a: Int
+
+    public init(a: Int) {
+        self.a = a
+    }
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: String.self)
+        self.a = try container.decode(Int.self, forKey: "a")
+    }
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: String.self)
+        try container.encode(a, forKey: "a")
+    }
+    public enum CodingKeys: CodingKey {
+        case a
+    }
+}
+
+public final class A7129: Codable, Sendable {
+    public let a: Int
+    public let b: A7130
+    public let c: [A7131]
+    public let d: [String: A7132]
+
+    public init(a: Int,
+        b: A7130,
+        c: [A7131],
+        d: [String: A7132]) {
+        self.a = a
+        self.b = b
+        self.c = c
+        self.d = d
+    }
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: String.self)
+        self.a = try container.decode(Int.self, forKey: "a")
+        self.b = try container.decode(A7130.self, forKey: "b")
+        self.c = try container.decode([A7131].self, forKey: "c")
+        self.d = try container.decode([String: A7132].self, forKey: "d")
+    }
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: String.self)
+        try container.encode(a, forKey: "a")
+        try container.encode(b, forKey: "b")
+        try container.encode(c, forKey: "c")
+        try container.encode(d, forKey: "d")
+    }
+    public enum CodingKeys: CodingKey {
+        case a
+        case b
+        case c
+        case d
+    }
+}
+
+public final class A7130: Codable, Sendable {
+    public let a: Int
+    public let b: A7131
+    public let c: [A7132]
+
+    public init(a: Int,
+        b: A7131,
+        c: [A7132]) {
+        self.a = a
+        self.b = b
+        self.c = c
+    }
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: String.self)
+        self.a = try container.decode(Int.self, forKey: "a")
+        self.b = try container.decode(A7131.self, forKey: "b")
+        self.c = try container.decode([A7132].self, forKey: "c")
+    }
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: String.self)
+        try container.encode(a, forKey: "a")
+        try container.encode(b, forKey: "b")
+        try container.encode(c, forKey: "c")
+    }
+    public enum CodingKeys: CodingKey {
+        case a
+        case b
+        case c
+    }
+}
+
+public final class A7131: Codable, Sendable {
+    public let a: Int
+    public let b: A7132
+
+    public init(a: Int,
+        b: A7132) {
+        self.a = a
+        self.b = b
+    }
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: String.self)
+        self.a = try container.decode(Int.self, forKey: "a")
+        self.b = try container.decode(A7132.self, forKey: "b")
+    }
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: String.self)
+        try container.encode(a, forKey: "a")
+        try container.encode(b, forKey: "b")
+    }
+    public enum CodingKeys: CodingKey {
+        case a
+        case b
+    }
+}
+
+public final class A7132: Codable, Sendable {
+    public let a: Int
+
+    public init(a: Int) {
+        self.a = a
+    }
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: String.self)
+        self.a = try container.decode(Int.self, forKey: "a")
+    }
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: String.self)
+        try container.encode(a, forKey: "a")
+    }
+    public enum CodingKeys: CodingKey {
+        case a
+    }
+}
+
+public final class A7133: Codable, Sendable {
+    public let a: Int
+    public let b: A7134
+    public let c: [A7135]
+    public let d: [String: A7136]
+
+    public init(a: Int,
+        b: A7134,
+        c: [A7135],
+        d: [String: A7136]) {
+        self.a = a
+        self.b = b
+        self.c = c
+        self.d = d
+    }
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: String.self)
+        self.a = try container.decode(Int.self, forKey: "a")
+        self.b = try container.decode(A7134.self, forKey: "b")
+        self.c = try container.decode([A7135].self, forKey: "c")
+        self.d = try container.decode([String: A7136].self, forKey: "d")
+    }
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: String.self)
+        try container.encode(a, forKey: "a")
+        try container.encode(b, forKey: "b")
+        try container.encode(c, forKey: "c")
+        try container.encode(d, forKey: "d")
+    }
+    public enum CodingKeys: CodingKey {
+        case a
+        case b
+        case c
+        case d
+    }
+}
+
+public final class A7134: Codable, Sendable {
+    public let a: Int
+    public let b: A7135
+    public let c: [A7136]
+
+    public init(a: Int,
+        b: A7135,
+        c: [A7136]) {
+        self.a = a
+        self.b = b
+        self.c = c
+    }
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: String.self)
+        self.a = try container.decode(Int.self, forKey: "a")
+        self.b = try container.decode(A7135.self, forKey: "b")
+        self.c = try container.decode([A7136].self, forKey: "c")
+    }
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: String.self)
+        try container.encode(a, forKey: "a")
+        try container.encode(b, forKey: "b")
+        try container.encode(c, forKey: "c")
+    }
+    public enum CodingKeys: CodingKey {
+        case a
+        case b
+        case c
+    }
+}
+
+public final class A7135: Codable, Sendable {
+    public let a: Int
+    public let b: A7136
+
+    public init(a: Int,
+        b: A7136) {
+        self.a = a
+        self.b = b
+    }
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: String.self)
+        self.a = try container.decode(Int.self, forKey: "a")
+        self.b = try container.decode(A7136.self, forKey: "b")
+    }
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: String.self)
+        try container.encode(a, forKey: "a")
+        try container.encode(b, forKey: "b")
+    }
+    public enum CodingKeys: CodingKey {
+        case a
+        case b
+    }
+}
+
+public final class A7136: Codable, Sendable {
+    public let a: Int
+
+    public init(a: Int) {
+        self.a = a
+    }
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: String.self)
+        self.a = try container.decode(Int.self, forKey: "a")
+    }
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: String.self)
+        try container.encode(a, forKey: "a")
+    }
+    public enum CodingKeys: CodingKey {
+        case a
+    }
+}
+
+public final class A7137: Codable, Sendable {
+    public let a: Int
+    public let b: A7138
+    public let c: [A7139]
+    public let d: [String: A7140]
+
+    public init(a: Int,
+        b: A7138,
+        c: [A7139],
+        d: [String: A7140]) {
+        self.a = a
+        self.b = b
+        self.c = c
+        self.d = d
+    }
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: String.self)
+        self.a = try container.decode(Int.self, forKey: "a")
+        self.b = try container.decode(A7138.self, forKey: "b")
+        self.c = try container.decode([A7139].self, forKey: "c")
+        self.d = try container.decode([String: A7140].self, forKey: "d")
+    }
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: String.self)
+        try container.encode(a, forKey: "a")
+        try container.encode(b, forKey: "b")
+        try container.encode(c, forKey: "c")
+        try container.encode(d, forKey: "d")
+    }
+    public enum CodingKeys: CodingKey {
+        case a
+        case b
+        case c
+        case d
+    }
+}
+
+public final class A7138: Codable, Sendable {
+    public let a: Int
+    public let b: A7139
+    public let c: [A7140]
+
+    public init(a: Int,
+        b: A7139,
+        c: [A7140]) {
+        self.a = a
+        self.b = b
+        self.c = c
+    }
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: String.self)
+        self.a = try container.decode(Int.self, forKey: "a")
+        self.b = try container.decode(A7139.self, forKey: "b")
+        self.c = try container.decode([A7140].self, forKey: "c")
+    }
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: String.self)
+        try container.encode(a, forKey: "a")
+        try container.encode(b, forKey: "b")
+        try container.encode(c, forKey: "c")
+    }
+    public enum CodingKeys: CodingKey {
+        case a
+        case b
+        case c
+    }
+}
+
+public final class A7139: Codable, Sendable {
+    public let a: Int
+    public let b: A7140
+
+    public init(a: Int,
+        b: A7140) {
+        self.a = a
+        self.b = b
+    }
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: String.self)
+        self.a = try container.decode(Int.self, forKey: "a")
+        self.b = try container.decode(A7140.self, forKey: "b")
+    }
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: String.self)
+        try container.encode(a, forKey: "a")
+        try container.encode(b, forKey: "b")
+    }
+    public enum CodingKeys: CodingKey {
+        case a
+        case b
+    }
+}
+
+public final class A7140: Codable, Sendable {
+    public let a: Int
+
+    public init(a: Int) {
+        self.a = a
+    }
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: String.self)
+        self.a = try container.decode(Int.self, forKey: "a")
+    }
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: String.self)
+        try container.encode(a, forKey: "a")
+    }
+    public enum CodingKeys: CodingKey {
+        case a
+    }
+}
+
