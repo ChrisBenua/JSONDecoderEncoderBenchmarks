@@ -13,7 +13,15 @@
 
 ## Purpose
 
-I want to show how massively Swift Runtime can harm JSONDecoder/Encoder performance in big projects.
+I want to demonstrate how massively Swift Runtime can harm JSONDecoder/Encoder performance in big projects.
+
+Firstly, we will dive into Swift Runtime protocol casting method.
+
+Secondly, JSONEncoder/Decoder performance flaws will be analyzed.
+
+Thirdly, Performance Optimizations will be proposed.
+
+At last, we will cover Apple Benchmark flaws and compare it to this benchmark.
 
 ## JSONDecoder/Encoder Performance Problem
 
@@ -62,7 +70,7 @@ func unwrap<T: Decodable>(_ mapValue: JSONMap.Value, as type: T.Type, for coding
 
 ![JSONDecoder](./Images/JSONDecoder-profiling.png)
 
-`swift_conformsToProtocol` consumes at least 84% of all `JSONDecoder.decode` time in out app startup scenario.
+`swift_conformsToProtocol` consumes at least 84% of all `JSONDecoder.decode` time in our app startup scenario.
 
 ### JSONEncoder Performance Flaws
 
@@ -187,7 +195,7 @@ So we mention type `KeyedDecodingContainer` with specific type `A.CodingKeys`.
 
 `func encode(to: Encoder) throws` has the same flaw.
 
-There are two possible ways to tackle it:
+There are two possible ways to tackle them:
 
 - Change `KeyedDecodingContainer` and `KeyedEncodingContainer` type signature to avoid type generic constraints (wasn't implemented in this repository)
 - Use the same `CodingKey` in `Codable/Decodable/Encodable` conformance auto-generated code. For example, `String`.
@@ -279,7 +287,7 @@ and there is no `__swift_instantiateConcreteTypeFromMangledName` call.
 
 #### \#3.2 Use String as CodingKey
 
-Why it would be faster:
+Why this would be faster:
 
 - `swift_conformsToProtocol` works slowly only when it gets called for the first time for each (class/enum/struct, protocol) pair.
 - So if we will use `String` as `CodingKey`, `swift_conformsToProtocol` will be called with the same types: `String` and `CodingKey`
@@ -322,7 +330,7 @@ Also, it each `CodingKey` adds around 1.8 kb to app size (measured on the same 1
   - 31.1 mb
 - So each `CodingKey` adds around 1.8 kb to application binary size.
 
-So if shared `CodingKey` will be implemented we could:
+So if shared `CodingKey` is implemented we could:
 
 - Optimize application size
 - Optimize overall application performance due to boosting `swift_conformsToProtocol` method by `__swift5_proto` section size reduction.
@@ -397,7 +405,7 @@ Swift-foundation repository has some JSONDecoder/Encoder benchmarking logic: [JS
 
 ### Apple Benchmark Flaws
 
-- It decodes/encode same models for 1 bln times without relaunching app
+- It decodes/encode the same models for 1 bln times without relaunching app
   - This way all `swift_conformsToProtocol` overhead is disguised, because `swift_conformsToProtocol` is slow only on first iteration.
   - Small binary size and small `__swift5_proto` section
 
@@ -406,7 +414,7 @@ Swift-foundation repository has some JSONDecoder/Encoder benchmarking logic: [JS
 ### Structure
 
 - Library `FastCoders` contains optimized realizations of `JSONDecoder`/`JSONEncoder`
-- `RegularModels` contains 10k Codable models with standard Codable implementation. This 10k Codable models can be semantically splitted to 2.5 groups of 4.
+- `RegularModels` contains 10k Codable models with standard Codable implementation. These 10k Codable models can be semantically splitted to 2.5k groups of 4.
 - `StringCodingKeyModels` contains same 10k Codable models with manually implemented `Codable` with `String` as `CodingKey`
 - `codable-benchmark-package` - target where 2.5k decodings and encodings of `RegularModels` duration is measured
 - `codable-benchmark-package-no-coding-keys` - target where 2.5k decodings and encodings of `StringCodingKeyModels` duration is measured.
