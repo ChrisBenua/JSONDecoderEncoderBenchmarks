@@ -1,5 +1,16 @@
 # Foundation.JSONDecoder/Encoder benchmarks
 
+## Table of Contents
+
+1. [Purpose](#purpose)
+2. [JSONDecoder/Encoder Performance Problem](#jsondecoderencoder-performance-problem)
+3. [JSONDecoder Performance Flaws](#jsondecoder-performance-flaws)
+4. [Proposed Optimizations](#proposed-optimizations)
+5. [Optimizations Results](#optimizations-results)
+6. [Apple Benchmark Overview](#apple-benchmark)
+7. [Apple Benchmark Flaws](#apple-benchmark-flaws)
+8. [This Benchmark](#this-benchmark)
+
 ## Purpose
 
 I want to show how massively Swift Runtime can harm JSONDecoder/Encoder performance in big projects.
@@ -47,7 +58,7 @@ func unwrap<T: Decodable>(_ mapValue: JSONMap.Value, as type: T.Type, for coding
 
 [`KeyedDecodingContainer`](https://developer.apple.com/documentation/swift/keyeddecodingcontainer) has type-generic-constraint: `K: CodingKey`. It is the second place where `swift_conformsToProtocol` gets called.
 
-#### JSONDecoder Performance Impact
+#### JSONDecoder swift_conformsToProtocol Performance Impact
 
 ![JSONDecoder](./Images/JSONDecoder-profiling.png)
 
@@ -75,7 +86,7 @@ func wrapGeneric<T: Encodable>(_ value: T, for additionalKey: (some CodingKey)? 
 
 [`KeyedEncodingContainer`](https://developer.apple.com/documentation/swift/keyedencodingcontainer) has type-generic-constraint: `K: CodingKey`. It is the second place where `swift_conformsToProtocol` gets called.
 
-#### JSONEncoder Performance Impact
+#### JSONEncoder swift_conformsToProtocol Performance Impact
 
 ![JSONEncoder](./Images/JSONEncoder-profiling.png).
 
@@ -246,6 +257,8 @@ extension KeyedDecodingContainer: KeyedDecodingContainerProtocol where K: Coding
 }
 ```
 
+Same trick can be applied to `KeyedEncodingContainer`.
+
 Note: despite `_KeyedDecodingContainerBox` has type-generic-constraint it seems like we can avoid rewriting code to avoid it because of the way it gets called:
 
 ```swift
@@ -290,6 +303,31 @@ extension String: CodingKey {
 ##### How this can be implemented
 
 We can introduce experimental flag. When flag is enabled, we don't auto-generate `enum CodingKeys` for our `struct/enum` and use raw `String` as `CodingKeys` in `init(from: Decoder) throws` and `encode(to: Encoder) throws`.
+
+##### Additional advantages
+
+Each auto-generated `enum CodingKeys` adds 5 protocol-conformance-descriptors. [godbolt](https://godbolt.org/z/z3rE1b5xs):
+
+- `CodingKey`
+- `Hashable`
+- `Equatable`
+- `CustomDebugStringConvertible`
+- `CustomStringConvertible`
+
+Also, it each `CodingKey` adds around 1.8 kb to app size (measured on the same 10k `Codable` structures):
+
+- codable-benchmark-package-no-coding-keys - where `String` is used as `CodingKey` but there are `CodingKeys` to match `__swift5_proto` section size
+  - 49 mb
+- codable-benchmark-package-no-coding-keys-measure-size  - where `String` is used as `CodingKey` and there are no `CodingKeys`
+  - 31.1 mb
+- So each `CodingKey` adds around 1.8 kb to application binary size.
+
+So if shared `CodingKey` will be implemented we could:
+
+- Optimize application size
+- Optimize overall application performance due to boosting `swift_conformsToProtocol` method by `__swift5_proto` section size reduction.
+  - codable-benchmark-package-no-coding-keys has 70321 protocol conformance descriptos
+  - codable-benchmark-package-no-coding-keys-measure-size has only 20321 protocol conformance descriptos
 
 ### Optimizations results
 
@@ -399,4 +437,3 @@ To get amount of protocol-conformance-descriptors in binary use this script:
   - `encode_new` - measure encoding using standard `JSONEncoder`
 
 I've used `run_bench.py` script to run binary for each mode. It measures each binary and each mode 100 times. It takes a while to run. You can easiliy adjust amount of repetitions in `run_bench.py`.
-
